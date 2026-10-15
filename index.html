@@ -1,0 +1,75 @@
+ <!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тетрис</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">🎮 ТЕТРИС</div>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Играть</a></li>
+                <li><a href="rules.html">Правила</a></li>
+                <li><a href="records.html">Рекорды</a></li>
+                <li><a href="about.html">О проекте</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="game-section">
+        <div class="container">
+            <div class="tetris-container">
+                <div class="game-info">
+                    <div class="info-box">
+                        <h3>Счёт</h3>
+                        <p id="score">0</p>
+                    </div>
+                    <div class="info-box">
+                        <h3>Уровень</h3>
+                        <p id="level">1</p>
+                    </div>
+                    <div class="info-box">
+                        <h3>Линии</h3>
+                        <p id="lines">0</p>
+                    </div>
+                    <button class="btn" id="save-score-btn">Сохранить рекорд</button>
+                </div>
+
+                <div class="game-board">
+                    <canvas id="tetris-board" width="300" height="600"></canvas>
+                    <div id="game-over" class="game-over hidden">
+                        <h2>Игра окончена!</h2>
+                        <p>Счёт: <span id="final-score">0</span></p>
+                        <button class="btn" onclick="restartGame()">Играть снова</button>
+                    </div>
+                    <div id="pause-screen" class="pause-screen hidden">
+                        <h2>ПАУЗА</h2>
+                        <p>Нажмите P для продолжения</p>
+                    </div>
+                </div>
+
+                <div class="next-piece">
+                    <h3>Следующая</h3>
+                    <canvas id="next-piece-canvas" width="120" height="120"></canvas>
+                </div>
+            </div>
+
+            <div class="controls-info">
+                <h3>Управление</h3>
+                <div class="controls-grid">
+                    <div><kbd>←</kbd> <kbd>→</kbd> Движение</div>
+                    <div><kbd>↓</kbd> Ускорить</div>
+                    <div><kbd>↑</kbd> Поворот</div>
+                    <div><kbd>Space</kbd> Бросить</div>
+                    <div><kbd>P</kbd> Пауза</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
