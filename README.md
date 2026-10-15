@@ -10,7 +10,7 @@
 
 Полноценная реализация классического **Тетриса** на чистом HTML5, CSS3 и JavaScript без единого фреймворка. Сайт автоматически деплоится на GitHub Pages через GitHub Actions при каждом push в `main`.
 
-![Скриншот игры](screenshots/game.png)
+![Скриншот игры](screenshots/game.jpg)
 
 ## 🎯 Цель проекта
 
