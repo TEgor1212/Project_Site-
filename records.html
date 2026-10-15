@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Рекорды - Тетрис</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">🎮 ТЕТРИС</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Играть</a></li>
+                <li><a href="rules.html">Правила</a></li>
+                <li><a href="records.html" class="active">Рекорды</a></li>
+                <li><a href="about.html">О проекте</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="content-section">
+        <div class="container">
+            <h1>🏆 Таблица рекордов</h1>
+            <div class="content-box">
+                <table class="records-table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Имя</th>
+                            <th>Счёт</th>
+                            <th>Уровень</th>
+                            <th>Дата</th>
+                        </tr>
+                    </thead>
+                    <tbody id="records-body">
+                        <tr><td colspan="5" style="text-align:center">Пока нет рекордов</td></tr>
+                    </tbody>
+                </table>
+                <div style="text-align:center; margin-top:2rem">
+                    <button class="btn" onclick="clearRecords()">Очистить рекорды</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function loadRecords() {
+            const records = JSON.parse(localStorage.getItem('tetris-records') || '[]');
+            const tbody = document.getElementById('records-body');
+            
+            if (records.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="5" style="text-align:center">Пока нет рекордов</td></tr>';
+                return;
+            }
+            
+            tbody.innerHTML = records.map((r, i) => {
+                const cls = i === 0 ? 'gold' : i === 1 ? 'silver' : i === 2 ? 'bronze' : '';
+                const medal = i === 0 ? '🥇' : i === 1 ? '🥈' : i === 2 ? '🥉' : (i + 1);
+                return `<tr class="${cls}">
+                    <td>${medal}</td>
+                    <td>${r.name}</td>
+                    <td>${r.score}</td>
+                    <td>${r.level}</td>
+                    <td>${r.date}</td>
+                </tr>`;
+            }).join('');
+        }
+        
+        function clearRecords() {
+            if (confirm('Удалить все рекорды?')) {
+                localStorage.removeItem('tetris-records');
+                loadRecords();
+            }
+        }
+        
+        loadRecords();
+    </script>
+</body>
+</html>
